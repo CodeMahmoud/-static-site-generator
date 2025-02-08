@@ -1,20 +1,22 @@
 import unittest
-from htmlnode import LeafNode, ParentNode, HTMLNODE
+from htmlnode import LeafNode, ParentNode, HTMLNode
 
 
 class TestHTMLNode(unittest.TestCase):
     def test_to_html_props(self):
-        node = HTMLNODE(
+        node = HTMLNode(
             "div",
             "Hello, world!",
             None,
             {"class": "greeting", "href": "https://boot.dev"},
         )
         self.assertEqual(
-            node.props_to_html(),' class="greeting" href="https://boot.dev"')
+            node.props_to_html(),
+            ' class="greeting" href="https://boot.dev"',
+        )
 
     def test_values(self):
-        node = HTMLNODE(
+        node = HTMLNode(
             "div",
             "I wish I could read",
         )
@@ -36,7 +38,7 @@ class TestHTMLNode(unittest.TestCase):
         )
 
     def test_repr(self):
-        node = HTMLNODE(
+        node = HTMLNode(
             "p",
             "What a strange world",
             None,
@@ -44,7 +46,7 @@ class TestHTMLNode(unittest.TestCase):
         )
         self.assertEqual(
             node.__repr__(),
-            "HTMLNODE What a strange world, children: None, {'class': 'primary'})",
+            "HTMLNode(p, What a strange world, children: None, {'class': 'primary'})",
         )
 
     def test_to_html_no_children(self):

@@ -1,3 +1,5 @@
+# from textnode import TextType
+
 class HTMLNODE():
     def __init__(self, tag=None, value=None, children=None, props=None):
         self.tag = tag
@@ -58,3 +60,20 @@ class ParentNode(HTMLNODE):
     def __repr__(self):
         return f"ParentNode({self.tag}, children: {self.children} , {self.props})"
 
+def text_node_to_html_node(text_node):
+    if text_node not in TextType:
+        raise Exception("Unknow TextType")
+    if text_node.text_type == TextType.TEXT:
+        return LeafNode(None, text_node.value)
+    if text_node.text_type == TextType.BOLD:
+        return LeafNode("b", text_node.value)
+    if text_node.text_type == TextType.ITALIC:
+        return ("i", text_node.value)
+    if text_node.text_type == TextType.CODE:
+        return ("code", text_node.value)
+    if text_node.text_type == TextType.LINK:
+        return ("a", text_node.value)
+    if text_node.text_type == TextType.IMAGE:
+        return ("img", text_node.value, ("src", "alt"))
+        
+    
