@@ -1,6 +1,6 @@
 # from textnode import TextType
 
-class HTMLNODE():
+class HTMLNode():
     def __init__(self, tag=None, value=None, children=None, props=None):
         self.tag = tag
         self.value = value
@@ -19,10 +19,10 @@ class HTMLNODE():
         return props_html
 
     def __repr__(self):
-        return f"HTMLNODE {self.value}, children: {self.children}, {self.props})"
+        return f"HTMLNode({self.tag}, {self.value}, children: {self.children}, {self.props})"
 
 
-class LeafNode(HTMLNODE):
+class LeafNode(HTMLNode):
     def __init__(self, tag, value, props=None):
         super().__init__(tag, value, None, props)
 
@@ -41,7 +41,7 @@ class LeafNode(HTMLNODE):
         return f"LeafNode({self.tag},{self.value},{self.props})"
 
 
-class ParentNode(HTMLNODE):
+class ParentNode(HTMLNode):
     def __init__(self, tag, children, props=None):
         super().__init__(tag, None, children, props)
 
